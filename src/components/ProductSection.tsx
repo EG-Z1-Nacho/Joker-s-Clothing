@@ -5,8 +5,15 @@ interface Product {
   id: number;
   name: string;
   brand: string;
-  image: string;
-  gallery: string[];
+  image: string;  // Debe ser 'image' para hacer match con `products.ts`
+  category: string;
+  description: string;
+  gallery: {
+    image: string;
+    name: string;
+    description: string;
+    price: number;
+  }[];
 }
 
 interface ProductSectionProps {
@@ -24,10 +31,11 @@ export default function ProductSection({ id, title, products }: ProductSectionPr
           {products.map((product) => (
             <ProductCard
               key={product.id}
+              id={product.id}
               name={product.name}
               brand={product.brand}
-              image={product.image}
-              gallery={product.gallery}
+              image={product.image}  // Usar 'image' en lugar de 'mainImage'
+              category={product.category}
             />
           ))}
         </div>

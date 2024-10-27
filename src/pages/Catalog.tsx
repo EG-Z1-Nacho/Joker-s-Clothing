@@ -1,39 +1,32 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
+import '../index.css'
 
 export default function Catalog() {
   const { category } = useParams();
   const categoryProducts = products[category as keyof typeof products] || [];
-  const categoryTitle = category?.charAt(0).toUpperCase() + category?.slice(1);
+  const categoryTitle = category ? category.charAt(0).toUpperCase() + category.slice(1) : "Unknown Category";
 
   return (
     <div className="min-h-screen bg-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold mb-8">{categoryTitle} Catalog</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="catalog-container">
           {categoryProducts.map((product) => (
-            <div key={product.id} className="space-y-4">
-              <div className="aspect-square overflow-hidden rounded-xl">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="space-y-2">
-                <p className="text-sm text-purple-600 font-medium">{product.brand}</p>
-                <h2 className="text-xl font-bold">{product.name}</h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {product.gallery.slice(0, 2).map((img, idx) => (
-                    <img
-                      key={idx}
-                      src={img}
-                      alt={`${product.name} view ${idx + 1}`}
-                      className="w-full aspect-square object-cover rounded-lg"
-                    />
-                  ))}
+            <div key={product.id} className="catalog-item">
+              <Link to={`/catalog/${category}/${product.id}`}>
+                <div className="image-hover-effect">
+                  <img
+                    src={product.image} 
+                    alt={product.name}
+                    className="catalog-product-image"
+                  />
                 </div>
+              </Link>
+              <div className="text-center mt-4">
+                <p className="text-sm text-purple-600 font-medium">{product.brand}</p>
+                <h2 className="text-lg font-bold">{product.name}</h2>
               </div>
             </div>
           ))}

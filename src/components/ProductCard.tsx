@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 interface ProductCardProps {
   id: number;
   name: string;
-  image: string;
+  image: string;  // Cambiado a 'image' en lugar de 'mainImage' para coincidir con products.ts
   brand: string;
   category: string;
 }

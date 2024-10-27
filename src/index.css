@@ -1,3 +1,316 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+  }
+  /* Ejemplo de CSS */
+  
+/* Importación de la fuente BlowBrush */
+@font-face {
+    font-family: 'BlowBrush';
+    src: url('src/fonts/blowbrush.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Aplicación de la fuente BlowBrush con degradado */
+.titulo-principal {
+    font-family: 'BlowBrush', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #9d4edd, #f72585); /* Degradado púrpura a rosa */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: -5%;
+}
+
+.subtitulo {
+    font-family: 'BlowBrush', sans-serif;
+    font-size: 1.5rem;
+    color: #f72585; /* Color rosa */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Importación de la fuente BlowBrush */
+@font-face {
+    font-family: 'BlowBrush';
+    src: url('./src/fonts/BlowBrush.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Aplicar BlowBrush en títulos y subtítulos globalmente */
+h1, h2, h3, h4, h5, h6, span {
+    font-family: 'BlowBrush', sans-serif;
+    color: rgb(0, 0, 0); /* Ajusta el color si es necesario */
+    text-transform: uppercase;
+}
+
+
+
+/* Contenedor principal del Navbar */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem;
+    background-color: rgba(0, 0, 0, 1); /* Fondo negro */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+}
+
+/* Contenedor de logo y nombre */
+.navbar-logo {
+    font-family: 'BlowBrush', sans-serif;
+    background: linear-gradient(90deg, #9d4edd, #f72585); /* Degradado púrpura a rosa */
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo del nombre */
+.navbar-brand {
+    font-size: 1.875rem; /* Equivalente a text-3xl */
+    font-weight: 900;
+    font-style: italic;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #9d4edd, #f72585); /* Degradado */
+}
+
+/* Enlaces de navegación en pantallas grandes */
+.nav-links {
+    display: flex;
+    gap: 1.7rem;
+    margin-left: auto; /* Empuja los enlaces a la derecha */
+}
+
+.navbar-link {
+    font-family: 'BlowBrush', sans-serif;
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar-link:hover {
+    color: #9d4edd; /* Cambia a púrpura en hover */
+} 
+  
+/* Menú móvil */
+.navbar-mobile-menu {
+    position: fixed;
+    inset: 0;
+    background-color: #2d2d2d; /* Color gris oscuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+}
+
+
+.navbar-mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.mobile-menu-link {
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.mobile-menu-link:hover {
+    color: #a855f7; /* Color púrpura en hover */
+    transform: scale(1.1); /* Escala el enlace ligeramente al pasar el ratón */
+}
+
+/* Mostrar enlaces de navegación en pantallas grandes */
+@media (min-width: 768px) {
+    .navbar-toggle {
+      display: none;
+    }
+    .nav-links {
+      display: flex;
+    }
+}
+
+/* Efecto de hover para la imagen en el Hero (pantalla principal) */
+/* Efecto de pálpito para la imagen en el Hero */
+@keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1.1); /* Tamaño normal */
+    }
+    50% {
+      transform: scale(1.3); /* Tamaño ampliado */
+    }
+  }
+  
+  .hero-image {
+    animation: heartbeat 8s ease-in-out infinite; /* Animación continua */
+  }
+
+  /* Ajustes para pantallas más pequeñas (móviles) */
+@media (max-width: 768px) {
+    .hero-container {
+        height: 80vh; /* Aumentar la altura para móviles */
+    }
+
+    .hero-image {
+        width: 60%; /* Aumentar el tamaño de la imagen */
+    }
+}
+
+  /* 
+  Contenedor principal del catálogo 
+  */
+.catalog-container {
+    display: grid;
+    gap: 1.5rem; /* Espacio entre los productos */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    margin-top: 2rem;
+}
+
+/* Ajuste de columnas en pantallas medianas y grandes */
+@media (min-width: 640px) { /* Pantallas medianas */
+    .catalog-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas medianas */
+    }
+}
+
+@media (min-width: 1024px) { /* Pantallas grandes */
+    .catalog-container {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas grandes */
+    }
+}
+
+/* Estilos de cada elemento del catálogo */
+.catalog-item {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catalog-item:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Efecto hover en la imagen */
+.image-hover-effect {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.image-hover-effect img {
+    width: 100%;
+    height: 250px; /* Ajusta la altura */
+    object-fit: cover;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.image-hover-effect:hover img {
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    opacity: 0.9; /* Opacidad reducida al hacer hover */
+}
+
+/* Texto de la marca y nombre del producto */
+.catalog-item p {
+    font-size: 0.875rem;
+    color: #6b46c1; /* Color púrpura */
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.catalog-item h2 {
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Texto centrado */
+.catalog-item .text-center {
+    text-align: center;
+}
+
+
+/* 
+Estilos para el contenedor del detalle del producto
+ */
+/* Estilo general para el contenedor del producto */
+.product-main-image {
+    max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+    width: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 0.5rem; /* Bordes redondeados */
+    transition: transform 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Efecto de overlay oscuro que cubre toda la pantalla */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(50, 50, 50, 0.7); /* Fondo gris oscuro semi-transparente */
+    z-index: 0; /* Asegúrate de que esté por encima de todo */
+    display: none; /* Oculto por defecto */
+}
+
+/* Estilo visible del overlay */
+.overlay.visible {
+    display: visible; /* Muestra el overlay */
+}
+
+
+/* Efecto hover en la imagen principal */
+.product-main-image:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+/* Efecto hover en las miniaturas de la galería */
+.product-thumbnail {
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+.product-thumbnail:hover {
+    transform: scale(1.05); /* Efecto de zoom en miniaturas */
+}
+
+/* Estilo para los textos del producto */
+.text-purple-600 {
+    color: #6b46c1; /* Color púrpura */
+}
+
+/* Estilo de texto para el nombre del producto */
+.text-4xl {
+    font-size: 2.25rem; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+}
+
+/* Estilo para los detalles del producto */
+.prose {
+    max-width: none; /* Sin límite de ancho */
+    margin-top: 1rem; /* Espacio superior */
+}
+
+/* Estilo para el precio */
+.text-green-600 {
+    color: #38a169; /* Color verde */
+    font-weight: bold; /* Negrita */
+}
